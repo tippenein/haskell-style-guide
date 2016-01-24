@@ -6,7 +6,7 @@ how I write my code and expect code submitted to my projects to be
 in. I'll probably link this to you if I don't sound particularly happy
 with a patch you sent me.
 
-This style guide is formally encoded by the [hindent](https://github.com/chrisdone/hindent) 
+This style guide is formally encoded by the [hindent](https://github.com/chrisdone/hindent)
 tool in the `chris-done` style, which I use for all the code I write.
 
 This guide is also very easy to follow when you have an editor like
@@ -16,7 +16,7 @@ which opinionatedly applies this style guide automatically.
 
 ## Indentation
 
-Indent two spaces. No tabs. 
+Indent two spaces. No tabs.
 
 ## Line length
 
@@ -31,7 +31,6 @@ Always document the module header:
 
 ``` haskell
 -- | What this module does.
-
 module Foo where
 ```
 
@@ -82,7 +81,7 @@ import System.Process
 Write import lists like this:
 
 ``` haskell
-import X (foo,bar)
+import X (foo, bar)
 ```
 
 And if they don't fit on one line, like this:
@@ -211,8 +210,7 @@ data Foo = Foo
   { fooBar :: X -- ^ Bar stuff.
   , fooMu  :: Y -- ^ Mu stuff.
   , fooZot :: Z -- ^ Zot stuff.
-  }
-  deriving (B)
+  } deriving (B)
 ```
 
 ## Expressions
@@ -246,7 +244,7 @@ parent child1 child2
        child4
 ```
 
-Never dangle children undearneath and behind the parent:
+Never dangle children underneath and behind the parent:
 
 ``` haskell
   parent
@@ -302,28 +300,16 @@ $(do runIO (putStrLn "Hello, World!")
      return [])
 ```
 
-There is also the extreme space-saving layout following the general
-parent-child layout guide:
+Only use `(>>)` over `do` where the sequence of the operations should be emphasized
 
 ``` haskell
-len =
-  do
-    foo
-    bar
-    mu
+main = first >> second >> third
 ```
 
-Never use `(>>)` where `do` will do:
-
 ``` haskell
-main = do bar
-          mu
-```
-
-Not
-
-``` haskell
-main = bar >> mu
+main = do first
+          second
+          third
 ```
 
 ## Operators
@@ -339,7 +325,7 @@ Not:
 
 ``` haskell
 len = length <$> getline
-demo = _1 -- whatever the lens operator is to do `over'
+demo = _1 %= (+2) (5,4)
 ```
 
 Never use `($)` to avoid parentheses:
@@ -370,8 +356,6 @@ Use parens:
 foo = (foo . bar . mu) zot bob
 ```
 
-(Tee hee!)
-
 ## Composition
 
 Prefer to use composition where functions are expected, not
@@ -392,12 +376,13 @@ This is better.
 
 ## Where clauses
 
-Always indent where clauses two spaces:
+Always indent `where` clauses two spaces:
 
 ``` haskell
 main =
-  do hello
-     world
+  go
+    hello
+    world
   where go = print "Hello!"
 ```
 
@@ -408,6 +393,18 @@ main = go
   where
     go = print "Hello!"
 ```
+
+Also, if you have multiple where definitions, newline after the where
+
+``` haskell
+main =
+  go
+  blub
+  where
+    go = print "Hello!"
+    blub = print "Blub!"
+```
+
 
 ## Let expressions
 
