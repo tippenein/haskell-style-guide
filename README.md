@@ -6,13 +6,11 @@ how I write my code and expect code submitted to my projects to be
 in. I'll probably link this to you if I don't sound particularly happy
 with a patch you sent me.
 
-This style guide is formally encoded by the [hindent](https://github.com/chrisdone/hindent)
-tool in the `chris-done` style, which I use for all the code I write.
+a sample [stylish-haskell](https://github.com/jaspervdj/stylish-haskell) yaml
+is included in this repo to enforce some of these styles
 
-This guide is also very easy to follow when you have an editor like
-Emacs with
-[structured-haskell-mode](https://github.com/chrisdone/structured-haskell-mode),
-which opinionatedly applies this style guide automatically.
+This style guide is also formally encoded by the [hindent](https://github.com/chrisdone/hindent)
+tool in the `chris-done` style
 
 ## Indentation
 
@@ -509,3 +507,4 @@ if x
    then y
    else x
 ```
+
